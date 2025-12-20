@@ -1,6 +1,6 @@
 package com.vitorcamilodev.library.entities;
 
-import java.util.Date;
+import java.time.Instant;
 
 import com.vitorcamilodev.library.entities.enums.LoanStatus;
 
@@ -26,8 +26,11 @@ public class Loan {
     @Column(name = "user_name")
 	private String user;
 	
-	private Date loanDate;
-	private Date returnDate;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant loanDate;
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant returnDate;
 
 	@Enumerated(EnumType.STRING)
 	private LoanStatus status;
@@ -40,7 +43,7 @@ public class Loan {
 
 	}
 
-	public Loan(Integer id, String user, Date loanDate, Date returnDate, LoanStatus status) {
+	public Loan(Integer id, String user, Instant loanDate, Instant returnDate, LoanStatus status) {
 		this.id = id;
 		this.user = user;
 		this.loanDate = loanDate;
@@ -64,19 +67,19 @@ public class Loan {
 		this.user = user;
 	}
 
-	public Date getLoanDate() {
+	public Instant getLoanDate() {
 		return loanDate;
 	}
 
-	public void setLoanDate(Date loanDate) {
+	public void setLoanDate(Instant loanDate) {
 		this.loanDate = loanDate;
 	}
 
-	public Date getReturnDate() {
+	public Instant getReturnDate() {
 		return returnDate;
 	}
 
-	public void setReturnDate(Date returnDate) {
+	public void setReturnDate(Instant returnDate) {
 		this.returnDate = returnDate;
 	}
 

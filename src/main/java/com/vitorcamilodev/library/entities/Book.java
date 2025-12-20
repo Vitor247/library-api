@@ -25,8 +25,8 @@ public class Book {
 	private String isbn;
 	private Year publicationYear;
 	
-	@ManyToOne
-	@JoinColumn(name = "author_id", nullable = false)
+	@ManyToOne 
+	@JoinColumn(name = "author_id")
 	private Author author;
     
 	@OneToMany(mappedBy = "book")
