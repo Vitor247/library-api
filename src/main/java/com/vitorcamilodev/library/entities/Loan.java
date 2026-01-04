@@ -90,5 +90,13 @@ public class Loan {
 	public void setStatus(LoanStatus status) {
 		this.status = status;
 	}
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
 	
 }

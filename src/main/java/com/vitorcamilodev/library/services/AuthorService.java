@@ -12,15 +12,13 @@ import com.vitorcamilodev.library.repositories.AuthorRepository;
 
 @Service
 public class AuthorService {
-	
+
 	@Autowired
 	private AuthorRepository repository;
-	
+
 	@Transactional(readOnly = true)
-    public List<AuthorDTO> findAll() {
-        return repository.findAll().stream()
-                .map(x -> new AuthorDTO(x))
-                .collect(Collectors.toList());
-    }
+	public List<AuthorDTO> findAll() {
+		return repository.findAll().stream().map(x -> new AuthorDTO(x)).collect(Collectors.toList());
+	}
 
 }

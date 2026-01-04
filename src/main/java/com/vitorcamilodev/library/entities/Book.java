@@ -74,5 +74,17 @@ public class Book {
 	public void setPublicationYear(Year publicationYear) {
 		this.publicationYear = publicationYear;
 	}
+
+	public Author getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+
+	public List<Loan> getLoans() {
+		return loans;
+	}
 	
 }

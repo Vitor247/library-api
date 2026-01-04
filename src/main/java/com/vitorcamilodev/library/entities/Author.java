@@ -68,5 +68,9 @@ public class Author {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
 	
 }
