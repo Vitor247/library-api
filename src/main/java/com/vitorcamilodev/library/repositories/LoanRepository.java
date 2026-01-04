@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.vitorcamilodev.library.entities.Loan;
 
-public interface LoanRepository extends JpaRepository<Loan, Long>{
+public interface LoanRepository extends JpaRepository<Loan, Integer>{
 	
 }
