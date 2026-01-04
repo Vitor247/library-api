@@ -21,11 +21,11 @@ public class BookDTO {
 	}
 
 	public BookDTO(Book book) {
-		this.id = book.getId();
-		this.title = book.getTitle();
-		this.isbn = book.getIsbn();
-		this.publicationYear = book.getPublicationYear();
-		this.authorId = book.getAuthor().getId();
+		id = book.getId();
+		title = book.getTitle();
+		isbn = book.getIsbn();
+		publicationYear = book.getPublicationYear();
+		authorId = book.getAuthor().getId();
 	}
 
 	public Integer getId() {
