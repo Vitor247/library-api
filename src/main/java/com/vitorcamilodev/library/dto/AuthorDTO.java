@@ -11,6 +11,10 @@ public class AuthorDTO {
 	private String nationality;
 	private Date birthDate;
 
+	public AuthorDTO() {
+		
+	}
+	
 	public AuthorDTO(Integer id, String name, String nationality, Date birthDate) {
 		this.id = id;
 		this.name = name;

@@ -29,5 +29,20 @@ public class AuthorService {
 				.orElseThrow(() -> new ResourceNotFoundException("Author not found at id: " + id));
 		return new AuthorDTO(author);
 	}
+	
+    @Transactional
+    public AuthorDTO create(AuthorDTO dto) {
+        Author author = new Author();
+        toEntity(author, dto);
+        author = repository.save(author);
+        return new AuthorDTO(author);
+    }
+    
+    private Author toEntity(Author author, AuthorDTO dto) {
+        author.setName(dto.getName());
+        author.setNationality(dto.getNationality());
+        author.setBirthDate(dto.getBirthDate());
+        return author;
+    }
 
 }
