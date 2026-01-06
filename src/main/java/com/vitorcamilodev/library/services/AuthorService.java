@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.vitorcamilodev.library.dto.AuthorDTO;
 import com.vitorcamilodev.library.entities.Author;
 import com.vitorcamilodev.library.repositories.AuthorRepository;
+import com.vitorcamilodev.library.services.exceptions.DatabaseException;
 import com.vitorcamilodev.library.services.exceptions.ResourceNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -48,9 +50,22 @@ public class AuthorService {
 			author = repository.save(author);
 			return new AuthorDTO(author);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Recurso não encontrado");
+			throw new ResourceNotFoundException("Resource not found");
 		}
     }
+    
+	@Transactional
+	public void delete(Integer id) {
+		if (!repository.existsById(id)) {
+			throw new ResourceNotFoundException("Resource not found");
+		}
+		try {
+			repository.deleteById(id);
+			repository.flush();
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException("Referential integrity failure");
+		}
+	}
     
     private Author toEntity(Author author, AuthorDTO dto) {
         author.setName(dto.getName());
