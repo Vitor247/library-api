@@ -12,6 +12,8 @@ import com.vitorcamilodev.library.entities.Author;
 import com.vitorcamilodev.library.repositories.AuthorRepository;
 import com.vitorcamilodev.library.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class AuthorService {
 
@@ -36,6 +38,18 @@ public class AuthorService {
         toEntity(author, dto);
         author = repository.save(author);
         return new AuthorDTO(author);
+    }
+    
+    @Transactional
+    public AuthorDTO update(Integer id, AuthorDTO dto) {
+		try {
+			Author author = repository.getReferenceById(id);
+			toEntity(author, dto);
+			author = repository.save(author);
+			return new AuthorDTO(author);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException("Recurso não encontrado");
+		}
     }
     
     private Author toEntity(Author author, AuthorDTO dto) {
