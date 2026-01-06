@@ -11,6 +11,10 @@ public class BookDTO {
 	private String isbn;
 	private Year publicationYear;
 	private Integer authorId;
+	
+	public BookDTO() {
+
+	}
 
 	public BookDTO(Integer id, String title, String isbn, Year publicationYear, Integer authorId) {
 		this.id = id;
