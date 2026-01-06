@@ -25,17 +25,17 @@ public class BookService {
 	
 	@Autowired
 	private AuthorRepository authorRepository;
-
-	@Transactional(readOnly = true)
-	public List<BookDTO> findAll() {
-		return repository.findAll().stream().map(x -> new BookDTO(x)).collect(Collectors.toList());
-	}
 	
 	@Transactional(readOnly = true)
 	public BookDTO findById(Integer id) {
 		Book book = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Book not found at id: " + id));
 		return new BookDTO(book);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<BookDTO> findAll() {
+		return repository.findAll().stream().map(x -> new BookDTO(x)).collect(Collectors.toList());
 	}
 	
 	@Transactional

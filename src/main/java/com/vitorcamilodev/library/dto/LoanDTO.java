@@ -14,6 +14,10 @@ public class LoanDTO {
 	private LoanStatus status;
 	private Integer bookId;
 	
+	public LoanDTO() {
+
+	}
+	
 	public LoanDTO(Integer id, String user, Instant loanDate, Instant returnDate, LoanStatus status, Integer bookId) {
 		this.id = id;
 		this.user = user;
